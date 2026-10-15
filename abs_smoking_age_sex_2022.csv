@@ -1,0 +1,43 @@
+sex,age_group,measure,prevalence_percent,source_flag,survey_year
+Persons,15–17,Daily smoking,1.6,,2022
+Persons,18–24,Daily smoking,7.3,,2022
+Persons,25–34,Daily smoking,10.9,,2022
+Persons,35–44,Daily smoking,10.9,,2022
+Persons,45–54,Daily smoking,13.8,,2022
+Persons,55–64,Daily smoking,14.9,,2022
+Persons,65 years and over,Daily smoking,6.3,,2022
+Persons,15–17,Current smoking,2.2,,2022
+Persons,18–24,Current smoking,11.1,,2022
+Persons,25–34,Current smoking,12.9,,2022
+Persons,35–44,Current smoking,12.1,,2022
+Persons,45–54,Current smoking,15.4,,2022
+Persons,55–64,Current smoking,16.0,,2022
+Persons,65 years and over,Current smoking,7.1,,2022
+Males,15–17,Daily smoking,1.2,,2022
+Males,18–24,Daily smoking,9.3,,2022
+Males,25–34,Daily smoking,13.4,,2022
+Males,35–44,Daily smoking,13.5,,2022
+Males,45–54,Daily smoking,15.3,,2022
+Males,55–64,Daily smoking,17.4,,2022
+Males,65 years and over,Daily smoking,7.5,,2022
+Males,15–17,Current smoking,2.2,,2022
+Males,18–24,Current smoking,13.0,,2022
+Males,25–34,Current smoking,15.9,,2022
+Males,35–44,Current smoking,15.4,,2022
+Males,45–54,Current smoking,17.8,,2022
+Males,55–64,Current smoking,18.2,,2022
+Males,65 years and over,Current smoking,8.1,,2022
+Females,15–17,Daily smoking,1.8,,2022
+Females,18–24,Daily smoking,5.9,,2022
+Females,25–34,Daily smoking,8.8,,2022
+Females,35–44,Daily smoking,8.5,,2022
+Females,45–54,Daily smoking,11.6,,2022
+Females,55–64,Daily smoking,12.0,,2022
+Females,65 years and over,Daily smoking,5.4,,2022
+Females,15–17,Current smoking,2.0,,2022
+Females,18–24,Current smoking,9.4,,2022
+Females,25–34,Current smoking,9.9,,2022
+Females,35–44,Current smoking,9.1,,2022
+Females,45–54,Current smoking,12.8,,2022
+Females,55–64,Current smoking,13.9,,2022
+Females,65 years and over,Current smoking,6.1,,2022

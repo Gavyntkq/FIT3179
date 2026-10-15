@@ -1,0 +1,72 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Current smoking prevalence by age group and sex, ABS National Health Survey 2022.",
+  "title": {
+    "text": "Current smoking prevalence varies by age and sex",
+    "subtitle": "Australians aged 15 and over, 2022"
+  },
+  "width": "container",
+  "height": 340,
+  "data": {
+    "url": "data/abs_smoking_age_sex_2022.csv",
+    "format": {"type": "csv"}
+  },
+  "transform": [
+    {
+      "filter": "datum.sex !== 'Persons' && datum.measure === 'Current smoking'"
+    }
+  ],
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 3
+  },
+  "encoding": {
+    "x": {
+      "field": "age_group",
+      "type": "ordinal",
+      "sort": [
+        "15–17",
+        "18–24",
+        "25–34",
+        "35–44",
+        "45–54",
+        "55–64",
+        "65 years and over"
+      ],
+      "title": "Age group",
+      "axis": {"labelAngle": -25}
+    },
+    "xOffset": {
+      "field": "sex",
+      "sort": ["Males", "Females"]
+    },
+    "y": {
+      "field": "prevalence_percent",
+      "type": "quantitative",
+      "title": "Current smokers (%)",
+      "scale": {"zero": true}
+    },
+    "color": {
+      "field": "sex",
+      "type": "nominal",
+      "title": "Sex",
+      "scale": {
+        "domain": ["Males", "Females"],
+        "range": ["#39765c", "#d98c5f"]
+      }
+    },
+    "tooltip": [
+      {"field": "sex", "title": "Sex"},
+      {"field": "age_group", "title": "Age group"},
+      {
+        "field": "prevalence_percent",
+        "title": "Current smoking (%)",
+        "format": ".1f"
+      }
+    ]
+  },
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"gridColor": "#e6eae6"}
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Daily smoking prevalence across Australia",
+    "subtitle": "Age-standardised daily smoking prevalence among Australians aged 18 and over, 2022"
+  },
+  "data": {
+    "url": "data/abs_state_smoking_map.geojson",
+    "format": {
+      "type": "json",
+      "property": "features"
+    }
+  },
+  "transform": [
+    {
+      "calculate": "datum.properties.state_territory",
+      "as": "state_territory"
+    },
+    {
+      "calculate": "toNumber(datum.properties.smoking_rate)",
+      "as": "smoking_rate"
+    },
+    {
+      "calculate": "toNumber(datum.properties.margin_of_error)",
+      "as": "margin_of_error"
+    },
+    {
+      "calculate": "toNumber(datum.properties.survey_year)",
+      "as": "survey_year"
+    }
+  ],
+  "width": "container",
+  "height": 430,
+  "projection": {
+    "type": "mercator",
+    "center": [134, -27],
+    "scale": 500
+  },
+  "mark": {
+    "type": "geoshape",
+    "stroke": "#ffffff",
+    "strokeWidth": 1.2
+  },
+  "encoding": {
+    "color": {
+      "field": "smoking_rate",
+      "type": "quantitative",
+      "title": "Daily smokers (%)",
+      "scale": {
+        "domain": [5, 15],
+        "range": ["#e5f3e8", "#176b45"],
+        "clamp": true
+      },
+      "legend": {
+        "orient": "right",
+        "gradientLength": 180,
+        "format": ".1f"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "state_territory",
+        "type": "nominal",
+        "title": "State or territory"
+      },
+      {
+        "field": "smoking_rate",
+        "type": "quantitative",
+        "title": "Daily smoking prevalence (%)",
+        "format": ".1f"
+      },
+      {
+        "field": "margin_of_error",
+        "type": "quantitative",
+        "title": "Margin of error (percentage points)",
+        "format": ".1f"
+      },
+      {
+        "field": "survey_year",
+        "type": "ordinal",
+        "title": "Survey year"
+      }
+    ]
+  },
+  "config": {
+    "background": "#ffffff",
+    "view": {
+      "fill": "#ffffff",
+      "stroke": null
+    },
+    "title": {
+      "fontSize": 16,
+      "subtitleFontSize": 12,
+      "anchor": "middle",
+      "color": "#173f32",
+      "subtitleColor": "#52635b"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 13
+    }
+  }
+}

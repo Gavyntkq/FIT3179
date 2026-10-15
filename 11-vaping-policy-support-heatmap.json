@@ -1,0 +1,205 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Support for measures to reduce nicotine-related harm by age group in Australia, 2025. Source: AIHW NDSHS 2025, Table 2.56.",
+  "title": {
+    "text": "Support for vaping controls differs by age",
+    "subtitle": "Percentage who support or strongly support each measure, Australia, 2025"
+  },
+  "data": {
+    "values": [
+      {
+        "measure": "Restrict sales to pharmacies",
+        "14–17": 82.9,
+        "18–24": 67.7,
+        "25–29": 68.2,
+        "30–39": 71.0,
+        "40–49": 73.5,
+        "50–59": 78.0,
+        "60–69": 77.7,
+        "70+": 82.7
+      },
+      {
+        "measure": "Require product packaging and labels",
+        "14–17": 85.7,
+        "18–24": 81.3,
+        "25–29": 79.9,
+        "30–39": 76.7,
+        "40–49": 79.2,
+        "50–59": 82.7,
+        "60–69": 82.6,
+        "70+": 87.8
+      },
+      {
+        "measure": "Ban attractive additives",
+        "14–17": 86.1,
+        "18–24": 74.2,
+        "25–29": 76.3,
+        "30–39": 77.2,
+        "40–49": 80.3,
+        "50–59": 85.4,
+        "60–69": 86.6,
+        "70+": 91.4
+      },
+      {
+        "measure": "Restrict other nicotine products",
+        "14–17": 76.4,
+        "18–24": 67.0,
+        "25–29": 66.5,
+        "30–39": 61.8,
+        "40–49": 64.9,
+        "50–59": 64.5,
+        "60–69": 65.8,
+        "70+": 75.8
+      }
+    ]
+  },
+  "transform": [
+    {
+      "fold": [
+        "14–17",
+        "18–24",
+        "25–29",
+        "30–39",
+        "40–49",
+        "50–59",
+        "60–69",
+        "70+"
+      ],
+      "as": ["age_group", "support_percent"]
+    }
+  ],
+  "width": 900,
+  "height": 250,
+  "encoding": {
+    "x": {
+      "field": "age_group",
+      "type": "ordinal",
+      "sort": [
+        "14–17",
+        "18–24",
+        "25–29",
+        "30–39",
+        "40–49",
+        "50–59",
+        "60–69",
+        "70+"
+      ],
+      "axis": {
+        "title": "Age group (years)",
+        "labelAngle": 0,
+        "labelFontSize": 11,
+        "titleFontSize": 12,
+        "domain": false,
+        "tickSize": 0,
+        "labelPadding": 8
+      }
+    },
+    "y": {
+      "field": "measure",
+      "type": "ordinal",
+      "sort": [
+        "Restrict sales to pharmacies",
+        "Require product packaging and labels",
+        "Ban attractive additives",
+        "Restrict other nicotine products"
+      ],
+      "axis": {
+        "title": null,
+        "labelFontSize": 11,
+        "labelLimit": 230,
+        "labelPadding": 10,
+        "domain": false,
+        "tickSize": 0
+      }
+    },
+    "color": {
+      "field": "support_percent",
+      "type": "quantitative",
+      "title": "Support (%)",
+      "scale": {
+        "domain": [60, 95],
+        "range": ["#e5f1e8", "#176443"],
+        "clamp": true
+      },
+      "legend": {
+        "orient": "bottom",
+        "direction": "horizontal",
+        "gradientLength": 300,
+        "titleFontSize": 12,
+        "labelFontSize": 11
+      }
+    },
+    "tooltip": [
+      {
+        "field": "measure",
+        "type": "nominal",
+        "title": "Measure"
+      },
+      {
+        "field": "age_group",
+        "type": "nominal",
+        "title": "Age group"
+      },
+      {
+        "field": "support_percent",
+        "type": "quantitative",
+        "title": "Support (%)",
+        "format": ".1f"
+      }
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "stroke": "#ffffff",
+        "strokeWidth": 2,
+        "cornerRadius": 2
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "text": {
+          "field": "support_percent",
+          "type": "quantitative",
+          "format": ".1f"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.support_percent >= 80",
+            "value": "#ffffff"
+          },
+          "value": "#173d31"
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": "#ffffff",
+    "view": {
+      "stroke": null
+    },
+    "title": {
+      "font": "Arial",
+      "fontSize": 17,
+      "subtitleFontSize": 12,
+      "anchor": "start",
+      "color": "#173d31",
+      "subtitleColor": "#526b60"
+    },
+    "axis": {
+      "labelColor": "#263c34",
+      "titleColor": "#173d31"
+    },
+    "legend": {
+      "labelColor": "#263c34",
+      "titleColor": "#173d31"
+    }
+  }
+}

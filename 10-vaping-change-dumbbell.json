@@ -1,0 +1,210 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Dumbbell chart comparing current e-cigarette use by age group between the 2022–2023 and 2025 AIHW survey periods.",
+  "title": {
+    "text": "Vaping estimates differ across age groups",
+    "subtitle": "Current e-cigarette use (%) in 2022–2023 compared with 2025"
+  },
+  "data": {
+    "url": "data/aihw_current_vaping_by_age.csv",
+    "format": {
+      "type": "csv"
+    }
+  },
+  "transform": [
+    {
+      "filter": "datum.survey_year == '2022–2023' || datum.survey_year == '2025'"
+    }
+  ],
+  "width": 1000,
+  "height": 350,
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "color": "#b8c8bf",
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "x": {
+          "field": "current_vaping_percent",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 23],
+            "nice": false
+          },
+          "axis": {
+            "title": "Currently using e-cigarettes (%)",
+            "grid": true,
+            "gridColor": "#e5ebe7",
+            "tickCount": 6,
+            "domain": false,
+            "labelFontSize": 11,
+            "titleFontSize": 12
+          }
+        },
+        "y": {
+          "field": "age_group",
+          "type": "ordinal",
+          "sort": [
+            "14–17",
+            "18–24",
+            "25–29",
+            "30–39",
+            "40–49",
+            "50–59",
+            "60–69",
+            "70+"
+          ],
+          "axis": {
+            "title": "Age group (years)",
+            "domain": false,
+            "tickSize": 0,
+            "labelPadding": 8,
+            "labelFontSize": 12
+          }
+        },
+        "detail": {
+          "field": "age_group"
+        },
+        "order": {
+          "field": "survey_year",
+          "type": "ordinal",
+          "sort": ["2022–2023", "2025"]
+        },
+        "tooltip": [
+          {
+            "field": "age_group",
+            "type": "nominal",
+            "title": "Age group"
+          },
+          {
+            "field": "survey_year",
+            "type": "ordinal",
+            "title": "Survey period"
+          },
+          {
+            "field": "current_vaping_percent",
+            "type": "quantitative",
+            "title": "Current e-cigarette use (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "source_flag",
+            "type": "nominal",
+            "title": "Source flag"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 130,
+        "stroke": "#ffffff",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "x": {
+          "field": "current_vaping_percent",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 23],
+            "nice": false
+          },
+          "axis": {
+            "title": "Currently using e-cigarettes (%)",
+            "grid": true,
+            "gridColor": "#e5ebe7",
+            "domain": false,
+            "labelFontSize": 11,
+            "titleFontSize": 12
+          }
+        },
+        "y": {
+          "field": "age_group",
+          "type": "ordinal",
+          "sort": [
+            "14–17",
+            "18–24",
+            "25–29",
+            "30–39",
+            "40–49",
+            "50–59",
+            "60–69",
+            "70+"
+          ],
+          "axis": {
+            "title": "Age group (years)",
+            "domain": false,
+            "tickSize": 0,
+            "labelPadding": 8,
+            "labelFontSize": 12
+          }
+        },
+        "color": {
+          "field": "survey_year",
+          "type": "nominal",
+          "title": "Survey period",
+          "scale": {
+            "domain": ["2022–2023", "2025"],
+            "range": ["#1b6245", "#e39b43"]
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "titleFontSize": 12,
+            "labelFontSize": 11
+          }
+        },
+        "tooltip": [
+          {
+            "field": "age_group",
+            "type": "nominal",
+            "title": "Age group"
+          },
+          {
+            "field": "survey_year",
+            "type": "ordinal",
+            "title": "Survey period"
+          },
+          {
+            "field": "current_vaping_percent",
+            "type": "quantitative",
+            "title": "Current e-cigarette use (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "source_flag",
+            "type": "nominal",
+            "title": "Source flag"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "background": "#ffffff",
+    "view": {
+      "stroke": null
+    },
+    "title": {
+      "font": "Arial",
+      "fontSize": 17,
+      "subtitleFontSize": 12,
+      "anchor": "start",
+      "color": "#173d31",
+      "subtitleColor": "#526b60"
+    },
+    "axis": {
+      "labelColor": "#263c34",
+      "titleColor": "#173d31"
+    },
+    "legend": {
+      "labelColor": "#263c34",
+      "titleColor": "#173d31"
+    }
+  }
+}

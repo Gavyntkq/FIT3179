@@ -1,0 +1,58 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Australian tobacco smoking prevalence over time, based on AIHW NDSHS Table 1.1.",
+  "title": {
+     "text": "Daily smoking in Australia has more than halved",
+     "subtitle": "Daily smoking prevalence among people aged 14 and over, 1991–2025"
+  },
+  "width": "container",
+  "height": 320,
+  "data": {
+    "url": "data/national_smoking_trend.csv",
+    "format": {"type": "csv"}
+  },
+  "transform": [
+    {"filter": "datum.smoking_status === 'Daily smoking'"},
+    {
+      "calculate": "indexof(['1991','1993','1995','1998','2001','2004','2007','2010','2013','2016','2019','2022–2023','2025'], datum.year)",
+      "as": "year_order"
+    }
+  ],
+  "mark": {
+    "type": "line",
+    "point": {"filled": true, "size": 65},
+    "strokeWidth": 3,
+    "color": "#39765c"
+  },
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "sort": {
+        "field": "year_order",
+        "order": "ascending"
+      },
+      "title": "Survey year",
+      "axis": {"labelAngle": -35}
+    },
+    "y": {
+      "field": "percentage",
+      "type": "quantitative",
+      "title": "Daily smokers (%)",
+      "scale": {"zero": true}
+    },
+    "tooltip": [
+      {"field": "year", "type": "ordinal", "title": "Year"},
+      {
+        "field": "percentage",
+        "type": "quantitative",
+        "title": "Daily smokers (%)",
+        "format": ".1f"
+      }
+    ]
+  },
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"gridColor": "#e6eae6"}
+  }
+}

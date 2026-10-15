@@ -1,0 +1,186 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Heat map of current e-cigarette use by age group and survey year in Australia, based on AIHW National Drug Strategy Household Survey 2025, Table 2.5.",
+  "title": {
+    "text": "E-cigarette use is concentrated among younger Australians",
+    "subtitle": "Current use by age group, people aged 14 and over, 2016–2025"
+  },
+  "data": {
+    "url": "data/aihw_current_vaping_by_age.csv",
+    "format": {
+      "type": "csv"
+    }
+  },
+  "transform": [
+    {
+      "calculate": "format(datum.current_vaping_percent, '.1f') + '%'",
+      "as": "cell_label"
+    }
+  ],
+  "width": "container",
+  "height": 300,
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "stroke": "#ffffff",
+        "strokeWidth": 2,
+        "cornerRadius": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "survey_year",
+          "type": "ordinal",
+          "sort": [
+            "2016",
+            "2019",
+            "2022–2023",
+            "2025"
+          ],
+          "title": "Survey year",
+          "axis": {
+            "labelAngle": 0,
+            "labelFontSize": 12,
+            "labelPadding": 8,
+            "tickSize": 0,
+            "domain": false
+          }
+        },
+        "y": {
+          "field": "age_group",
+          "type": "ordinal",
+          "sort": [
+            "14–17",
+            "18–24",
+            "25–29",
+            "30–39",
+            "40–49",
+            "50–59",
+            "60–69",
+            "70+"
+          ],
+          "title": "Age group (years)",
+          "axis": {
+            "labelFontSize": 12,
+            "labelPadding": 8,
+            "tickSize": 0,
+            "domain": false
+          }
+        },
+        "color": {
+          "field": "current_vaping_percent",
+          "type": "quantitative",
+          "title": "Currently using e-cigarettes (%)",
+          "scale": {
+            "domain": [0, 21],
+            "range": [
+              "#e5f3e8",
+              "#176b45"
+            ],
+            "clamp": true
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "titleLimit": 400,
+            "gradientLength": 280,
+            "format": ".0f"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "age_group",
+            "type": "nominal",
+            "title": "Age group"
+          },
+          {
+            "field": "survey_year",
+            "type": "ordinal",
+            "title": "Survey year"
+          },
+          {
+            "field": "current_vaping_percent",
+            "type": "quantitative",
+            "title": "Currently using e-cigarettes (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "source_flag",
+            "type": "nominal",
+            "title": "Source flag"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "fontWeight": 600
+      },
+      "encoding": {
+        "x": {
+          "field": "survey_year",
+          "type": "ordinal",
+          "sort": [
+            "2016",
+            "2019",
+            "2022–2023",
+            "2025"
+          ]
+        },
+        "y": {
+          "field": "age_group",
+          "type": "ordinal",
+          "sort": [
+            "14–17",
+            "18–24",
+            "25–29",
+            "30–39",
+            "40–49",
+            "50–59",
+            "60–69",
+            "70+"
+          ]
+        },
+        "text": {
+          "field": "cell_label",
+          "type": "nominal"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.current_vaping_percent >= 10",
+            "value": "#ffffff"
+          },
+          "value": "#173d31"
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": "#ffffff",
+    "view": {
+      "stroke": null
+    },
+    "title": {
+      "fontSize": 17,
+      "subtitleFontSize": 12,
+      "anchor": "start",
+      "color": "#173d31",
+      "subtitleColor": "#526b60",
+      "font": "Arial"
+    },
+    "axis": {
+      "grid": false,
+      "labelColor": "#263c34",
+      "titleColor": "#173d31",
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelColor": "#263c34",
+      "titleColor": "#173d31",
+      "titleFontSize": 12
+    }
+  }
+}

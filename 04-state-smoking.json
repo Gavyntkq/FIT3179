@@ -1,0 +1,134 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Daily smoking prevalence differs across jurisdictions",
+    "subtitle": "Age-standardised prevalence among Australians aged 18 and over, 2022; 95% margins of error"
+  },
+  "data": {
+    "url": "data/abs_state_daily_smoking_2022.csv",
+    "format": {"type": "csv"}
+  },
+  "transform": [
+    {
+      "calculate": "toNumber(datum.age_standardised_daily_smoking_percent)",
+      "as": "smoking_rate"
+    },
+    {
+      "calculate": "toNumber(datum.age_standardised_moe95_percent_points)",
+      "as": "margin"
+    },
+    {
+      "calculate": "datum.smoking_rate - datum.margin",
+      "as": "lower"
+    },
+    {
+      "calculate": "datum.smoking_rate + datum.margin",
+      "as": "upper"
+    },
+    {
+      "calculate": "datum.state_territory === 'Australia' ? 'Australia' : 'State or territory'",
+      "as": "geography_type"
+    }
+  ],
+  "width": "container",
+  "height": 360,
+  "encoding": {
+    "y": {
+      "field": "state_territory",
+      "type": "nominal",
+      "sort": {
+        "field": "smoking_rate",
+        "op": "max",
+        "order": "descending"
+      },
+      "title": null,
+      "axis": {
+        "labelLimit": 200
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 3
+      },
+      "encoding": {
+        "x": {
+          "field": "smoking_rate",
+          "type": "quantitative",
+          "title": "Daily smokers (%)",
+          "scale": {"domain": [0, 17], "zero": true}
+        },
+        "color": {
+          "field": "geography_type",
+          "type": "nominal",
+          "title": "Geography",
+          "scale": {
+            "domain": ["State or territory", "Australia"],
+            "range": ["#39765c", "#d98c5f"]
+          }
+        },
+        "tooltip": [
+          {"field": "state_territory", "title": "Jurisdiction"},
+          {"field": "smoking_rate", "title": "Daily smoking (%)", "format": ".1f"},
+          {"field": "margin", "title": "95% margin of error", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#172d24",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "lower",
+          "type": "quantitative",
+          "scale": {"domain": [0, 17], "zero": true},
+          "axis": null
+        },
+        "x2": {"field": "upper"}
+      }
+    },
+    {
+      "mark": {
+        "type": "tick",
+        "orient": "vertical",
+        "color": "#172d24",
+        "thickness": 2,
+        "size": 12
+      },
+      "encoding": {
+        "x": {
+          "field": "lower",
+          "type": "quantitative",
+          "scale": {"domain": [0, 17], "zero": true},
+          "axis": null
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "tick",
+        "orient": "vertical",
+        "color": "#172d24",
+        "thickness": 2,
+        "size": 12
+      },
+      "encoding": {
+        "x": {
+          "field": "upper",
+          "type": "quantitative",
+          "scale": {"domain": [0, 17], "zero": true},
+          "axis": null
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"gridColor": "#e6eae6"}
+  }
+}

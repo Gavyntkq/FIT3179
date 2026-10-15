@@ -1,0 +1,178 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #173d31;
+  background: #f3f5f2;
+  line-height: 1.6;
+}
+
+.hero {
+  width: 100%;
+  background: #173d31;
+  color: #ffffff;
+  padding: 64px 24px 68px;
+}
+
+.hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: 1.15;
+}
+
+.hero-description {
+  max-width: 720px;
+  margin: 20px 0 0;
+  font-size: 18px;
+  color: #edf4ef;
+}
+
+/* --------------------------------
+   Main content
+-------------------------------- */
+
+.container {
+  width: min(1200px, calc(100% - 40px));
+  margin: 40px auto;
+}
+
+.chart-card {
+  margin-bottom: 32px;
+  padding: 32px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(23, 61, 49, 0.06);
+}
+
+.chart-card h2 {
+  margin: 0 0 16px;
+  color: #174333;
+  font-size: 24px;
+  line-height: 1.4;
+}
+
+.description {
+  margin: 0 0 24px;
+  color: #263c34;
+  font-size: 16px;
+}
+
+.chart-container {
+  width: 100%;
+  min-height: 280px;
+  margin: 12px 0 22px;
+}
+
+.chart-container .vega-embed {
+  width: 100%;
+}
+
+.chart-container canvas,
+.chart-container svg {
+  max-width: 100%;
+}
+
+.map-container {
+  min-height: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* --------------------------------
+   Explanatory notes and sources
+-------------------------------- */
+
+.insight {
+  margin: 20px 0;
+  padding: 18px 20px;
+  background: #eff5f0;
+  border-left: 4px solid #39765c;
+  color: #203b30;
+}
+
+.source {
+  margin: 20px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid #e0e6e1;
+  color: #526b60;
+  font-size: 13px;
+}
+
+.chart-error {
+  padding: 16px;
+  background: #fff1f0;
+  border-left: 4px solid #b42318;
+  color: #8c1d18;
+}
+
+/* --------------------------------
+   Footer
+-------------------------------- */
+
+.footer {
+  padding: 28px 20px;
+  text-align: center;
+  color: #526b60;
+  font-size: 14px;
+}
+
+.footer p {
+  margin: 4px 0;
+}
+
+/* --------------------------------
+   Responsive layout
+-------------------------------- */
+
+@media (max-width: 700px) {
+  .hero {
+    padding: 44px 20px;
+  }
+
+  .hero-description {
+    font-size: 16px;
+  }
+
+  .container {
+    width: calc(100% - 24px);
+    margin: 24px auto;
+  }
+
+  .chart-card {
+    padding: 20px 14px;
+    margin-bottom: 20px;
+  }
+
+  .chart-card h2 {
+    font-size: 21px;
+  }
+
+  .description {
+    font-size: 15px;
+  }
+
+  .map-container {
+    min-height: 350px;
+    overflow-x: auto;
+  }
+}

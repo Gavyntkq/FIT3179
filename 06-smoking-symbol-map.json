@@ -1,0 +1,143 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Smoking prevalence across Australia's jurisdictions",
+    "subtitle": "Circle size represents age-standardised daily smoking prevalence among adults aged 18 and over, 2022"
+  },
+  "width": 850,
+  "height": 430,
+  "projection": {
+    "type": "equalEarth"
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/abs_state_smoking_map.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e8eee9",
+        "stroke": "#ffffff",
+        "strokeWidth": 1
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "state": "Western Australia",
+            "longitude": 121,
+            "latitude": -25,
+            "smoking_rate": 10.7
+          },
+          {
+            "state": "Northern Territory",
+            "longitude": 133,
+            "latitude": -19,
+            "smoking_rate": 13.1
+          },
+          {
+            "state": "South Australia",
+            "longitude": 136,
+            "latitude": -30,
+            "smoking_rate": 9.7
+          },
+          {
+            "state": "Queensland",
+            "longitude": 145,
+            "latitude": -21.5,
+            "smoking_rate": 14.4
+          },
+          {
+            "state": "New South Wales",
+            "longitude": 147,
+            "latitude": -32.5,
+            "smoking_rate": 10.0
+          },
+          {
+            "state": "Victoria",
+            "longitude": 145,
+            "latitude": -36.8,
+            "smoking_rate": 9.2
+          },
+          {
+            "state": "Tasmania",
+            "longitude": 146.5,
+            "latitude": -42,
+            "smoking_rate": 13.0
+          },
+          {
+            "state": "Australian Capital Territory",
+            "longitude": 149.1,
+            "latitude": -35.3,
+            "smoking_rate": 5.9
+          }
+        ]
+      },
+      "mark": {
+        "type": "circle",
+        "opacity": 0.8,
+        "color": "#287653",
+        "stroke": "#ffffff",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "smoking_rate",
+          "type": "quantitative",
+          "title": "Daily smokers (%)",
+          "scale": {
+            "domain": [0, 15],
+            "range": [0, 1200]
+          },
+          "legend": {
+            "orient": "right",
+            "format": ".1f"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State or territory"
+          },
+          {
+            "field": "smoking_rate",
+            "type": "quantitative",
+            "title": "Daily smoking prevalence (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "background": "#ffffff",
+    "view": {
+      "stroke": null
+    },
+    "title": {
+      "fontSize": 16,
+      "subtitleFontSize": 12,
+      "anchor": "middle",
+      "color": "#173f32",
+      "subtitleColor": "#52635b"
+    },
+    "legend": {
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    }
+  }
+}

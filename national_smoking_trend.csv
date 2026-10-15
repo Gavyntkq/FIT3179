@@ -1,0 +1,79 @@
+year,smoking_status,percentage
+1991,Daily smoking,24.3
+1993,Daily smoking,25.0
+1995,Daily smoking,23.8
+1998,Daily smoking,21.8
+2001,Daily smoking,19.5
+2004,Daily smoking,17.5
+2007,Daily smoking,16.6
+2010,Daily smoking,15.2
+2013,Daily smoking,12.8
+2016,Daily smoking,12.2
+2019,Daily smoking,11.1
+2022–2023,Daily smoking,8.3
+2025,Daily smoking,5.6
+1991,Weekly smoking,2.8
+1993,Weekly smoking,2.3
+1995,Weekly smoking,1.6
+1998,Weekly smoking,1.8
+2001,Weekly smoking,1.5
+2004,Weekly smoking,1.6
+2007,Weekly smoking,1.3
+2010,Weekly smoking,1.3
+2013,Weekly smoking,1.4
+2016,Weekly smoking,1.3
+2019,Weekly smoking,1.3
+2022–2023,Weekly smoking,1.1
+2025,Weekly smoking,1.1
+1991,Less than weekly smoking,2.4
+1993,Less than weekly smoking,1.8
+1995,Less than weekly smoking,1.8
+1998,Less than weekly smoking,1.3
+2001,Less than weekly smoking,2.1
+2004,Less than weekly smoking,1.6
+2007,Less than weekly smoking,1.5
+2010,Less than weekly smoking,1.4
+2013,Less than weekly smoking,1.6
+2016,Less than weekly smoking,1.4
+2019,Less than weekly smoking,1.6
+2022–2023,Less than weekly smoking,1.1
+2025,Less than weekly smoking,1.1
+1991,Smoked previously,21.4
+1993,Smoked previously,21.7
+1995,Smoked previously,20.2
+1998,Smoked previously,25.9
+2001,Smoked previously,26.4
+2004,Smoked previously,26.5
+2007,Smoked previously,25.2
+2010,Smoked previously,24.3
+2013,Smoked previously,24.1
+2016,Smoked previously,22.8
+2019,Smoked previously,22.9
+2022–2023,Smoked previously,24.1
+2025,Smoked previously,23.5
+1991,Never smoked,49.0
+1993,Never smoked,49.1
+1995,Never smoked,52.6
+1998,Never smoked,49.2
+2001,Never smoked,50.5
+2004,Never smoked,52.9
+2007,Never smoked,55.4
+2010,Never smoked,57.8
+2013,Never smoked,60.2
+2016,Never smoked,62.3
+2019,Never smoked,63.1
+2022–2023,Never smoked,65.4
+2025,Never smoked,68.7
+1991,Currently smoking (calculated),29.5
+1993,Currently smoking (calculated),29.1
+1995,Currently smoking (calculated),27.2
+1998,Currently smoking (calculated),24.9
+2001,Currently smoking (calculated),23.1
+2004,Currently smoking (calculated),20.7
+2007,Currently smoking (calculated),19.4
+2010,Currently smoking (calculated),17.9
+2013,Currently smoking (calculated),15.8
+2016,Currently smoking (calculated),14.9
+2019,Currently smoking (calculated),14.0
+2022–2023,Currently smoking (calculated),10.5
+2025,Currently smoking (calculated),7.8
