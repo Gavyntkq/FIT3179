@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Smoking in Australia | FIT3179</title>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Vega and Vega-Lite chart libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+  <script src="js/main.js" defer></script>
+</head>
+
+<body>
+  <header class="hero">
+    <div class="hero-content">
+      <p class="eyebrow">FIT3179 · DATA VISUALISATION 2</p>
+      <h1>Smoking in Australia</h1>
+      <p class="hero-description">
+        Exploring smoking behaviour, demographic differences and
+        changing patterns over time.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Chart 1 -->
+    <section class="chart-card">
+      <h2>1. The long-term decline in smoking</h2>
+      <p class="description">
+        Daily smoking prevalence in Australia has declined substantially
+        over the past three decades. This chart tracks changes in the
+        percentage of Australians aged 14 and over who smoke daily.
+      </p>
+      <div id="chart-01" class="chart-container">
+        Loading Chart 1...
+      </div>
+      <p class="source">
+        Source: Australian Institute of Health and Welfare (AIHW),
+        National Drug Strategy Household Survey 2025.
+      </p>
+    </section>
+
+    <!-- Chart 2 -->
+    <section class="chart-card">
+      <h2>2. How smoking patterns differ by age and sex</h2>
+      <p class="description">
+        Compare daily smoking prevalence across age groups and between
+        males and females to explore how smoking behaviour has changed
+        over successive survey years.
+      </p>
+      <div id="chart-02" class="chart-container">
+        Loading Chart 2...
+      </div>
+      <p class="source">
+        Source: AIHW, National Drug Strategy Household Survey 2025,
+        Table 1.4.
+      </p>
+      <div class="insight">
+        <strong>Note on source flags:</strong>
+        Estimates may carry source flags from the original AIHW table.
+        Hover over a data point to inspect its flag, and consult the
+        original table notes before interpreting flagged estimates.
+      </div>
+    </section>
+
+    <!-- Chart 3 -->
+    <section class="chart-card">
+      <h2>3. Current smoking across age groups</h2>
+      <p class="description">
+        The ABS National Health Survey provides a complementary snapshot
+        of smoking behaviour in 2022. Comparing current smoking prevalence
+        by age and sex reveals demographic differences beyond daily
+        smoking alone.
+      </p>
+      <div id="chart-03" class="chart-container">
+        Loading Chart 3...
+      </div>
+      <p class="source">
+        Source: Australian Bureau of Statistics (ABS),
+        National Health Survey 2022, Table 14.3.
+      </p>
+    </section>
+
+    <!-- Chart 4 -->
+    <section class="chart-card">
+      <h2>4. How daily smoking varies across Australia</h2>
+      <p class="description">
+        Smoking prevalence differs across Australian jurisdictions.
+        Age-standardised estimates and their published 95% margins of
+        error help communicate differences and statistical uncertainty.
+      </p>
+      <div id="chart-04" class="chart-container">
+        Loading Chart 4...
+      </div>
+      <div class="insight">
+        <strong>How to read this chart:</strong>
+        Compare bar lengths to see differences in estimated prevalence.
+        The error bars represent 95% margins of error, so small
+        differences should be interpreted cautiously.
+      </div>
+      <p class="source">
+        Source: ABS, National Health Survey 2022, Tables 2.3 and 2.4.
+      </p>
+    </section>
+
+    <!-- Chart 5 -->
+    <section class="chart-card">
+      <h2>5. Where smoking prevalence is highest</h2>
+      <p class="description">
+        This geographic view compares age-standardised daily smoking
+        prevalence across Australia's states and territories in 2022.
+        The colour scale makes regional differences easier to identify.
+      </p>
+      <div id="chart-05" class="chart-container map-container">
+        Loading Chart 5...
+      </div>
+      <div class="insight">
+        <strong>How to read this map:</strong>
+        Darker green indicates a higher estimated daily smoking
+        prevalence, while lighter green indicates a lower prevalence.
+        Hover over a jurisdiction to inspect its estimate.
+      </div>
+      <p class="source">
+        Source: ABS, National Health Survey 2022, state and territory
+        daily smoking estimates. Geographic boundaries derived from
+        ABS Australian Statistical Geography Standard 2021 data.
+      </p>
+    </section>
+
+   <!-- Chart 6 -->
+   <section class="chart-card">
+     <h2>6. Comparing smoking prevalence with proportional symbols</h2>
+     <p class="description">
+       This proportional symbol map compares age-standardised daily
+       smoking prevalence across Australia's states and territories
+       in 2022. Larger circles represent jurisdictions with higher
+       estimated smoking prevalence, allowing regional differences
+       to be compared geographically.
+     </p>
+     <div id="chart-06" class="chart-container map-container">
+       Loading Chart 6...
+     </div>
+     <div class="insight">
+       <strong>How to read this map:</strong>
+       Each circle represents a state or territory, and its size
+       corresponds to its age-standardised daily smoking prevalence.
+       Larger circles indicate higher estimated prevalence, while
+       smaller circles indicate lower estimated prevalence.
+       Hover over a circle to inspect the jurisdiction and its estimate.
+     </div>
+     <p class="source">
+       Source: Australian Bureau of Statistics (ABS), National Health
+       Survey 2022, state and territory daily smoking estimates.
+       Geographic boundaries derived from ABS Australian Statistical
+       Geography Standard 2021 data.
+     </p>
+   </section>
+   
+    <!-- Chart 7 -->
+    <section class="chart-card">
+      <h2>7. E-cigarette use across age groups</h2>
+      <p class="description">
+        E-cigarette use has changed across Australian age groups over
+        successive National Drug Strategy Household Survey periods.
+        This heat map compares the percentage of people currently using
+        e-cigarettes from 2016 to 2025, highlighting differences between
+        younger and older age groups.
+      </p>
+      <div id="chart-07" class="chart-container">
+        Loading Chart 7...
+      </div>
+      <div class="insight">
+        <strong>How to read this chart:</strong>
+        Each cell represents an age group in a particular survey year.
+        Darker green indicates a higher reported percentage currently
+        using e-cigarettes. Hover over a cell to inspect its estimate
+        and source flag. Estimates marked with an asterisk should be
+        used with caution.
+      </div>
+      <p class="source">
+        Source: Australian Institute of Health and Welfare (AIHW),
+        National Drug Strategy Household Survey 2025, Table 2.5:
+        Use of e-cigarettes, by age and gender, 2016 to 2025.
+        Estimates marked with an asterisk should be used with caution.
+        The # symbol identifies a statistically significant change
+        between 2022–2023 and 2025.
+      </p>
+    </section>
+    
+    <!-- Chart 8 -->
+    <section class="chart-card">
+      <h2>8. How smoking prevalence has changed across generations</h2>
+      <p class="description">
+        Comparing daily smoking prevalence in 2001 and 2025 highlights
+        how patterns differ across adult age groups. The slope chart
+        connects the two survey years to show whether prevalence has
+        increased or decreased, with separate panels for males and females.
+      </p>
+      <div id="chart-08" class="chart-container">
+        Loading Chart 8...
+      </div>
+      <div class="insight">
+        <strong>How to read this chart:</strong>
+        Each line represents an age group. A downward slope indicates
+        lower daily smoking prevalence in 2025 than in 2001, while an
+        upward slope indicates a higher estimate. Compare the size and
+        direction of the changes between age groups and between males
+        and females.Hover over a point to inspect its estimate and 
+        source flag.
+      </div>
+      <p class="source">
+        Source: Australian Institute of Health and Welfare (AIHW),
+        National Drug Strategy Household Survey 2025, Table 1.4:
+        Daily smoking by age and sex, 2001–2025. Estimates with
+        source flags should be interpreted according to the original
+        table's notes.
+      </p>
+    </section>
+    
+    <!-- Chart 9 -->
+    <section class="chart-card">
+      <h2>9. How smoking prevalence reshapes the map</h2>
+      <p class="description">
+        This tile-style cartogram represents Australian states and
+        territories as squares whose areas are proportional to their
+        age-standardised daily smoking prevalence in 2022. Unlike a
+        conventional map, the sizes of the squares change to emphasise
+        differences in the reported prevalence estimates.
+      </p>
+      <div id="chart-09" class="chart-container map-container">
+        Loading Chart 9...
+      </div>
+      <div class="insight">
+        <strong>How to read this cartogram:</strong>
+        Each square represents a state or territory. Larger square
+        areas indicate higher age-standardised daily smoking prevalence,
+        while smaller areas indicate lower prevalence. The percentage
+        is printed inside each square, and hovering reveals the
+        jurisdiction and estimate. The layout is schematic rather than
+        a geographically exact map.
+      </div>
+      <p class="source">
+        Source: Australian Bureau of Statistics (ABS), National Health
+        Survey 2022, age-standardised daily smoking estimates for states
+        and territories. Values are expressed as percentages.
+      </p>
+    </section>
+    
+    <!-- Chart 10 -->
+    <section class="chart-card">
+      <h2>10. How vaping estimates changed between 2022–2023 and 2025</h2>
+      <p class="description">
+        This dumbbell chart compares current e-cigarette use across
+        Australian age groups between the 2022–2023 and 2025 survey
+        periods. The connecting lines highlight the direction and
+        size of the difference between the two estimates.
+      </p>
+      <div id="chart-10" class="chart-container">
+        Loading Chart 10...
+      </div>
+      <div class="insight">
+        <strong>How to read this chart:</strong>
+        Each row represents an age group. Green shows the 2022-
+        2023 estimate, while orange shows the 2025 estimate. A
+        dot further to the right indicates a higher percentage.
+        The largest visible gap is among 18-24-year-olds, whose
+        estimate fell from 20.6% to 14.0%. These are survey estimates,
+        so differences should be interpreted in the context of
+        the source table's notes.
+      </div>
+      <p class="source">
+        Source: Australian Institute of Health and Welfare (AIHW),
+        National Drug Strategy Household Survey 2025, Table 2.5:
+        Use of e-cigarettes, by age and gender, 2016 to 2025.
+        Estimates marked with source flags should be interpreted
+        according to the original table's notes.
+      </p>
+    </section>
+    
+    <!-- Chart 11 -->
+    <section class="chart-card">
+      <h2>11. Support for vaping controls differs by age</h2>
+      <p class="description">
+        Beyond smoking and vaping rates, public attitudes provide
+        another perspective on nicotine-related harm. This heat map
+        compares support for four measures intended to reduce
+        nicotine-related harm across Australian age groups in 2025.
+      </p>
+      <div id="chart-11" class="chart-container">
+        Loading Chart 11...
+      </div>
+      <div class="insight">
+        <strong>How to read this chart:</strong>
+        Each cell shows the percentage of people in an age group
+        who support or strongly support a measure. Darker green
+        indicates higher support. Hover over a cell to inspect the
+        exact percentage and measure.
+      </div>
+      <p class="source">
+        Source: Australian Institute of Health and Welfare (AIHW),
+        National Drug Strategy Household Survey 2025, Table 2.56:
+        Support for measures to reduce the problems associated with
+        nicotine use, by age. Values represent support or strong support.
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>Data visualisation project · FIT3179 · Smoking Behaviour</p>
+    <p>Australian smoking patterns, demographic differences and trends.</p>
+  </footer>
+</body>
+</html>
