@@ -1,10 +1,9 @@
-
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Dumbbell chart comparing current e-cigarette use by age group between the 2022–2023 and 2025 AIHW survey periods.",
   "title": {
-    "text": "Vaping estimates differ across age groups",
-    "subtitle": "Current e-cigarette use (%) in 2022–2023 compared with 2025"
+    "text": "Current e-cigarette use changed unevenly by age",
+    "subtitle": "Current use (%) in 2022–2023 compared with 2025"
   },
   "data": {
     "url": "data/aihw_current_vaping_by_age.csv",
@@ -17,7 +16,7 @@
       "filter": "datum.survey_year == '2022–2023' || datum.survey_year == '2025'"
     }
   ],
-  "width": 1000,
+  "width": 760,
   "height": 350,
   "layer": [
     {
@@ -31,7 +30,10 @@
           "field": "current_vaping_percent",
           "type": "quantitative",
           "scale": {
-            "domain": [0, 23],
+            "domain": [
+              0,
+              23
+            ],
             "nice": false
           },
           "axis": {
@@ -71,7 +73,10 @@
         "order": {
           "field": "survey_year",
           "type": "ordinal",
-          "sort": ["2022–2023", "2025"]
+          "sort": [
+            "2022–2023",
+            "2025"
+          ]
         },
         "tooltip": [
           {
@@ -111,7 +116,10 @@
           "field": "current_vaping_percent",
           "type": "quantitative",
           "scale": {
-            "domain": [0, 23],
+            "domain": [
+              0,
+              23
+            ],
             "nice": false
           },
           "axis": {
@@ -149,8 +157,14 @@
           "type": "nominal",
           "title": "Survey period",
           "scale": {
-            "domain": ["2022–2023", "2025"],
-            "range": ["#1b6245", "#e39b43"]
+            "domain": [
+              "2022–2023",
+              "2025"
+            ],
+            "range": [
+              "#1b6245",
+              "#e39b43"
+            ]
           },
           "legend": {
             "orient": "bottom",
