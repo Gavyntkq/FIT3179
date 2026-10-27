@@ -4,7 +4,7 @@
     "text": "Smoking prevalence across Australia's jurisdictions",
     "subtitle": "Circle size represents age-standardised daily smoking prevalence among adults aged 18 and over, 2022"
   },
-  "width": 850,
+  "width": 700,
   "height": 430,
   "projection": {
     "type": "equalEarth"
@@ -99,8 +99,8 @@
           "type": "quantitative",
           "title": "Daily smokers (%)",
           "scale": {
-            "domain": [0, 15],
-            "range": [0, 1200]
+            "domain": [5, 15],
+            "range": [80, 1200]
           },
           "legend": {
             "orient": "right",
