@@ -35,8 +35,8 @@
     }
   },
   "spec": {
-    "width": 500,
-    "height": 350,
+    "width": 420,
+    "height": 320,
     "layer": [
       {
         "mark": {
@@ -100,11 +100,13 @@
           "scheme": "tableau10"
         },
         "legend": {
-          "orient": "bottom",
-          "direction": "horizontal",
-          "columns": 4,
-          "titleFontSize": 12,
-          "labelFontSize": 11
+          "orient": "right",
+          "direction": "vertical",
+          "columns": 1,
+          "labelLimit": 120,
+          "symbolSize": 90,
+          "padding": 10,
+          "offset": 15
         }
       },
       "detail": {
