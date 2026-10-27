@@ -1,97 +1,49 @@
 
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Tile-style cartogram of age-standardised daily smoking prevalence across Australian states and territories in 2022. Tile area is proportional to prevalence.",
+  "description": "Compact tile cartogram comparing age-standardised daily smoking prevalence across Australian states and territories in 2022. Square areas are proportional to prevalence.",
   "title": {
-    "text": "Comparing daily smoking prevalence across jurisdictions",
-    "subtitle": "Tile cartogram: square area represents age-standardised daily smoking prevalence, 2022"
+    "text": "Daily smoking prevalence across Australian jurisdictions",
+    "subtitle": "2022 age-standardised daily smoking prevalence (%) · Larger tiles indicate higher prevalence"
   },
-  "width": 1200,
-  "height": 520,
+  "width": 600,
+  "height": 420,
   "data": {
     "values": [
-      {
-        "state": "Western Australia",
-        "abbr": "WA",
-        "rate": 10.7,
-        "x0": 12,
-        "y0": 38
-      },
-      {
-        "state": "Northern Territory",
-        "abbr": "NT",
-        "rate": 13.1,
-        "x0": 35,
-        "y0": 57
-      },
-      {
-        "state": "Queensland",
-        "abbr": "QLD",
-        "rate": 14.4,
-        "x0": 54,
-        "y0": 54
-      },
-      {
-        "state": "South Australia",
-        "abbr": "SA",
-        "rate": 9.7,
-        "x0": 35,
-        "y0": 34
-      },
-      {
-        "state": "New South Wales",
-        "abbr": "NSW",
-        "rate": 10.0,
-        "x0": 55,
-        "y0": 32
-      },
-      {
-        "state": "Victoria",
-        "abbr": "VIC",
-        "rate": 9.2,
-        "x0": 53,
-        "y0": 12
-      },
-      {
-        "state": "Tasmania",
-        "abbr": "TAS",
-        "rate": 13.0,
-        "x0": 69,
-        "y0": -3
-      },
-      {
-        "state": "Australian Capital Territory",
-        "abbr": "ACT",
-        "rate": 5.9,
-        "x0": 77,
-        "y0": 34
-      }
+      {"state": "Western Australia", "abbr": "WA", "rate": 10.7, "x": 8, "y": 25},
+      {"state": "Northern Territory", "abbr": "NT", "rate": 13.1, "x": 29, "y": 43},
+      {"state": "Queensland", "abbr": "QLD", "rate": 14.4, "x": 44, "y": 43},
+      {"state": "South Australia", "abbr": "SA", "rate": 9.7, "x": 29, "y": 27},
+      {"state": "New South Wales", "abbr": "NSW", "rate": 10.0, "x": 45, "y": 27},
+      {"state": "Australian Capital Territory", "abbr": "ACT", "rate": 5.9, "x": 60, "y": 27},
+      {"state": "Victoria", "abbr": "VIC", "rate": 9.2, "x": 44, "y": 11},
+      {"state": "Tasmania", "abbr": "TAS", "rate": 13.0, "x": 59, "y": 3}
     ]
   },
   "transform": [
     {
-      "calculate": "sqrt(datum.rate) * 4",
-      "as": "tile_side"
+      "calculate": "sqrt(datum.rate) * 3.5",
+      "as": "side"
     },
     {
-      "calculate": "datum.x0 + datum.tile_side",
-      "as": "x1"
+      "calculate": "datum.x + datum.side",
+      "as": "x2"
     },
     {
-      "calculate": "datum.y0 + datum.tile_side",
-      "as": "y1"
+      "calculate": "datum.y + datum.side",
+      "as": "y2"
     },
     {
-      "calculate": "datum.x0 + datum.tile_side / 2",
-      "as": "x_mid"
+      "calculate": "datum.x + datum.side / 2",
+      "as": "xmid"
     },
     {
-      "calculate": "datum.y0 + datum.tile_side / 2",
-      "as": "y_mid"
+      "calculate": "datum.y + datum.side / 2",
+      "as": "ymid"
     },
     {
       "calculate": "datum.abbr + '\\n' + format(datum.rate, '.1f') + '%'",
-      "as": "tile_label"
+      "as": "label"
     }
   ],
   "layer": [
@@ -101,35 +53,31 @@
         "fill": "#397c5b",
         "stroke": "#ffffff",
         "strokeWidth": 2,
-        "cornerRadius": 2
+        "cornerRadius": 3
       },
       "encoding": {
         "x": {
-          "field": "x0",
+          "field": "x",
           "type": "quantitative",
           "scale": {
-            "domain": [0, 120],
+            "domain": [0, 86],
             "nice": false,
             "zero": false
           },
           "axis": null
         },
-        "x2": {
-          "field": "x1"
-        },
+        "x2": {"field": "x2"},
         "y": {
-          "field": "y0",
+          "field": "y",
           "type": "quantitative",
           "scale": {
-            "domain": [-10, 86],
+            "domain": [0, 60],
             "nice": false,
             "zero": false
           },
           "axis": null
         },
-        "y2": {
-          "field": "y1"
-        },
+        "y2": {"field": "y2"},
         "tooltip": [
           {
             "field": "state",
@@ -139,7 +87,7 @@
           {
             "field": "rate",
             "type": "quantitative",
-            "title": "Age-standardised daily smoking (%)",
+            "title": "Daily smoking prevalence (%)",
             "format": ".1f"
           }
         ]
@@ -158,27 +106,27 @@
       },
       "encoding": {
         "x": {
-          "field": "x_mid",
+          "field": "xmid",
           "type": "quantitative",
           "scale": {
-            "domain": [0, 120],
+            "domain": [0, 86],
             "nice": false,
             "zero": false
           },
           "axis": null
         },
         "y": {
-          "field": "y_mid",
+          "field": "ymid",
           "type": "quantitative",
           "scale": {
-            "domain": [-10, 86],
+            "domain": [0, 60],
             "nice": false,
             "zero": false
           },
           "axis": null
         },
         "text": {
-          "field": "tile_label",
+          "field": "label",
           "type": "nominal"
         }
       }
@@ -195,7 +143,8 @@
       "subtitleFontSize": 12,
       "anchor": "start",
       "color": "#173d31",
-      "subtitleColor": "#526b60"
+      "subtitleColor": "#526b60",
+      "offset": 12
     }
   }
 }
