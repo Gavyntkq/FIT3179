@@ -1,137 +1,158 @@
 
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Compact tile cartogram comparing age-standardised daily smoking prevalence across Australian states and territories in 2022. Square areas are proportional to prevalence.",
+  "description": "Slope chart comparing daily smoking prevalence by age group and sex in Australia between 2001 and 2025.",
   "title": {
-    "text": "Daily smoking prevalence across Australian jurisdictions",
-    "subtitle": "2022 age-standardised daily smoking prevalence (%) · Larger tiles indicate higher prevalence"
+    "text": "Daily smoking has declined across most adult age groups",
+    "subtitle": "Daily smoking prevalence (%) in 2001 compared with 2025"
   },
-  "width": 600,
-  "height": 420,
   "data": {
-    "values": [
-      {"state": "Western Australia", "abbr": "WA", "rate": 10.7, "x": 8, "y": 25},
-      {"state": "Northern Territory", "abbr": "NT", "rate": 13.1, "x": 29, "y": 43},
-      {"state": "Queensland", "abbr": "QLD", "rate": 14.4, "x": 44, "y": 43},
-      {"state": "South Australia", "abbr": "SA", "rate": 9.7, "x": 29, "y": 27},
-      {"state": "New South Wales", "abbr": "NSW", "rate": 10.0, "x": 45, "y": 27},
-      {"state": "Australian Capital Territory", "abbr": "ACT", "rate": 5.9, "x": 60, "y": 27},
-      {"state": "Victoria", "abbr": "VIC", "rate": 9.2, "x": 44, "y": 11},
-      {"state": "Tasmania", "abbr": "TAS", "rate": 13.0, "x": 59, "y": 3}
-    ]
+    "url": "data/age_gender_daily_smoking.csv",
+    "format": {
+      "type": "csv"
+    }
   },
   "transform": [
     {
-      "calculate": "sqrt(datum.rate) * 3.5",
-      "as": "side"
+      "filter": "toString(datum.year) == '2001' || toString(datum.year) == '2025'"
     },
     {
-      "calculate": "datum.x + datum.side",
-      "as": "x2"
-    },
-    {
-      "calculate": "datum.y + datum.side",
-      "as": "y2"
-    },
-    {
-      "calculate": "datum.x + datum.side / 2",
-      "as": "xmid"
-    },
-    {
-      "calculate": "datum.y + datum.side / 2",
-      "as": "ymid"
-    },
-    {
-      "calculate": "datum.abbr + '\\n' + format(datum.rate, '.1f') + '%'",
-      "as": "label"
+      "filter": "datum.age_group != '14–17'"
     }
   ],
-  "layer": [
-    {
-      "mark": {
-        "type": "rect",
-        "fill": "#397c5b",
-        "stroke": "#ffffff",
-        "strokeWidth": 2,
-        "cornerRadius": 3
-      },
-      "encoding": {
-        "x": {
-          "field": "x",
-          "type": "quantitative",
-          "scale": {
-            "domain": [0, 86],
-            "nice": false,
-            "zero": false
-          },
-          "axis": null
-        },
-        "x2": {"field": "x2"},
-        "y": {
-          "field": "y",
-          "type": "quantitative",
-          "scale": {
-            "domain": [0, 60],
-            "nice": false,
-            "zero": false
-          },
-          "axis": null
-        },
-        "y2": {"field": "y2"},
-        "tooltip": [
-          {
-            "field": "state",
-            "type": "nominal",
-            "title": "State or territory"
-          },
-          {
-            "field": "rate",
-            "type": "quantitative",
-            "title": "Daily smoking prevalence (%)",
-            "format": ".1f"
-          }
-        ]
+  "facet": {
+    "column": {
+      "field": "sex",
+      "type": "nominal",
+      "title": null,
+      "sort": ["males", "females"],
+      "header": {
+        "labelFontSize": 14,
+        "labelFontWeight": "bold",
+        "labelColor": "#173d31",
+        "labelPadding": 12
       }
-    },
-    {
-      "mark": {
-        "type": "text",
-        "font": "Arial",
-        "fontSize": 11,
-        "fontWeight": "bold",
-        "color": "#ffffff",
-        "align": "center",
-        "baseline": "middle",
-        "lineBreak": "\n"
+    }
+  },
+  "spec": {
+    "width": 420,
+    "height": 320,
+    "layer": [
+      {
+        "mark": {
+          "type": "line",
+          "strokeWidth": 2.5
+        }
       },
-      "encoding": {
-        "x": {
-          "field": "xmid",
-          "type": "quantitative",
-          "scale": {
-            "domain": [0, 86],
-            "nice": false,
-            "zero": false
-          },
-          "axis": null
-        },
-        "y": {
-          "field": "ymid",
-          "type": "quantitative",
-          "scale": {
-            "domain": [0, 60],
-            "nice": false,
-            "zero": false
-          },
-          "axis": null
-        },
-        "text": {
-          "field": "label",
-          "type": "nominal"
+      {
+        "mark": {
+          "type": "point",
+          "filled": true,
+          "size": 75,
+          "stroke": "#ffffff",
+          "strokeWidth": 1
         }
       }
+    ],
+    "encoding": {
+      "x": {
+        "field": "year",
+        "type": "ordinal",
+        "sort": ["2001", "2025"],
+        "title": "Survey year",
+        "axis": {
+          "labelAngle": 0,
+          "labelFontSize": 12,
+          "labelPadding": 8,
+          "tickSize": 0,
+          "domain": false
+        }
+      },
+      "y": {
+        "field": "daily_smoking_percent",
+        "type": "quantitative",
+        "title": "Daily smokers (%)",
+        "scale": {
+          "domain": [0, 35],
+          "nice": false
+        },
+        "axis": {
+          "tickCount": 5,
+          "grid": true,
+          "gridColor": "#e5ebe7",
+          "domain": false
+        }
+      },
+      "color": {
+        "field": "age_group",
+        "type": "nominal",
+        "title": "Age group",
+        "sort": [
+          "18–24",
+          "25–29",
+          "30–39",
+          "40–49",
+          "50–59",
+          "60–69",
+          "70+"
+        ],
+        "scale": {
+          "scheme": "tableau10"
+        },
+        "legend": {
+          "orient": "right",
+          "direction": "vertical",
+          "columns": 1,
+          "labelLimit": 120,
+          "symbolSize": 90,
+          "padding": 10,
+          "offset": 15
+        }
+      },
+      "detail": {
+        "field": "age_group"
+      },
+      "order": {
+        "field": "year",
+        "type": "ordinal",
+        "sort": ["2001", "2025"]
+      },
+      "tooltip": [
+        {
+          "field": "sex",
+          "type": "nominal",
+          "title": "Sex"
+        },
+        {
+          "field": "age_group",
+          "type": "nominal",
+          "title": "Age group"
+        },
+        {
+          "field": "year",
+          "type": "ordinal",
+          "title": "Survey year"
+        },
+        {
+          "field": "daily_smoking_percent",
+          "type": "quantitative",
+          "title": "Daily smoking (%)",
+          "format": ".1f"
+        },
+        {
+          "field": "source_flag",
+          "type": "nominal",
+          "title": "Source flag"
+        }
+      ]
     }
-  ],
+  },
+  "resolve": {
+    "scale": {
+      "y": "shared",
+      "color": "shared"
+    }
+  },
   "config": {
     "background": "#ffffff",
     "view": {
@@ -143,8 +164,17 @@
       "subtitleFontSize": 12,
       "anchor": "start",
       "color": "#173d31",
-      "subtitleColor": "#526b60",
-      "offset": 12
+      "subtitleColor": "#526b60"
+    },
+    "axis": {
+      "labelColor": "#263c34",
+      "titleColor": "#173d31",
+      "titleFontSize": 12,
+      "labelFontSize": 11
+    },
+    "legend": {
+      "labelColor": "#263c34",
+      "titleColor": "#173d31"
     }
   }
 }
