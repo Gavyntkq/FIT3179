@@ -53,9 +53,8 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       id: "chart-11",
       file: "charts/11-vaping-policy-support-heatmap.json",
-      name: "Chart 11: Support for vaping controls by age"
+      name: "Chart 11: Support for vaping and nicotine controls"
     }
-
   ];
 
   async function loadChart(chart) {
@@ -81,9 +80,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       container.textContent = "";
 
+      container.setAttribute("role", "img");
+      container.setAttribute("aria-label", chart.name);
+
       await vegaEmbed(container, specification, {
         actions: true,
-        renderer: "canvas"
+        renderer: "canvas",
+        tooltip: { theme: "light" }
       });
 
       console.log(`Successfully loaded: ${chart.file}`);
@@ -95,8 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const message = document.createElement("p");
       message.className = "chart-error";
       message.textContent =
-        `${chart.name} could not be displayed. ` +
-        "Open the browser console for details.";
+        `${chart.name} could not be displayed. Please refresh the page; if the problem continues, check the chart file path and browser console.`;
 
       container.appendChild(message);
     }
