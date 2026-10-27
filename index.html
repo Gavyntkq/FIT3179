@@ -16,19 +16,47 @@
   <script src="js/main.js" defer></script>
 </head>
 
-<body>
+<body id="top">
   <header class="hero">
     <div class="hero-content">
       <p class="eyebrow">FIT3179 · DATA VISUALISATION 2</p>
       <h1>Smoking in Australia</h1>
       <p class="hero-description">
-        Exploring smoking behaviour, demographic differences and
-        changing patterns over time.
+        Exploring smoking behaviour, demographic differences and changing patterns over time —
+        from the long-term decline in daily smoking to the changing profile of e-cigarette use.
       </p>
+      <div class="hero-meta" aria-label="Project details">
+        <span>Australia</span><span>1991–2025</span><span>11 visualisations</span>
+      </div>
     </div>
   </header>
 
+  <nav class="section-nav" aria-label="Explore the visualisation story">
+    <a href="#smoking-trends">Smoking trends</a>
+    <a href="#demographic-patterns">Age &amp; sex</a>
+    <a href="#geographic-patterns">Geography</a>
+    <a href="#vaping-patterns">E-cigarette use</a>
+  </nav>
+
   <main class="container">
+    <section class="story-intro" aria-labelledby="story-heading">
+      <div>
+        <p class="section-kicker">THE STORY IN THE DATA</p>
+        <h2 id="story-heading">Smoking is declining — but the pattern is not the same for everyone.</h2>
+        <p>Explore how daily smoking has changed over time, how estimates differ by age and sex, and how smoking and e-cigarette use vary across Australian jurisdictions and survey periods.</p>
+      </div>
+      <div class="headline-stat" aria-label="Daily smoking fell from 24.3 percent in 1991 to 5.6 percent in 2025">
+        <span class="stat-label">Daily smoking prevalence</span>
+        <div class="stat-values"><strong>24.3%</strong><span aria-hidden="true">→</span><strong>5.6%</strong></div>
+        <span class="stat-caption">1991 to 2025 · people aged 14+</span>
+      </div>
+    </section>
+
+    <div class="story-group" id="smoking-trends">
+      <p class="section-kicker">01 / THE BIG PICTURE</p>
+      <h2>How smoking has changed</h2>
+      <p>Start with the national trend, then explore how the pattern differs between age groups and sexes.</p>
+    </div>
 
     <!-- Chart 1 -->
     <section class="chart-card">
@@ -47,6 +75,12 @@
       </p>
     </section>
 
+    <div class="story-group" id="demographic-patterns">
+      <p class="section-kicker">02 / WHO IS AFFECTED?</p>
+      <h2>Differences across age and sex</h2>
+      <p>These views compare age groups and sex, using different survey measures where noted.</p>
+    </div>
+
     <!-- Chart 2 -->
     <section class="chart-card">
       <h2>2. How smoking patterns differ by age and sex</h2>
@@ -62,12 +96,6 @@
         Source: AIHW, National Drug Strategy Household Survey 2025,
         Table 1.4.
       </p>
-      <div class="insight">
-        <strong>Note on source flags:</strong>
-        Estimates may carry source flags from the original AIHW table.
-        Hover over a data point to inspect its flag, and consult the
-        original table notes before interpreting flagged estimates.
-      </div>
     </section>
 
     <!-- Chart 3 -->
@@ -87,6 +115,12 @@
         National Health Survey 2022, Table 14.3.
       </p>
     </section>
+
+    <div class="story-group" id="geographic-patterns">
+      <p class="section-kicker">03 / WHERE PATTERNS DIFFER</p>
+      <h2>Smoking across states and territories</h2>
+      <p>Compare the same jurisdiction-level estimates using a ranked view, a geographic map, proportional symbols and a tile cartogram.</p>
+    </div>
 
     <!-- Chart 4 -->
     <section class="chart-card">
@@ -125,7 +159,7 @@
         <strong>How to read this map:</strong>
         Darker green indicates a higher estimated daily smoking
         prevalence, while lighter green indicates a lower prevalence.
-        Hover over a jurisdiction to inspect its estimate.
+        Select or hover over a jurisdiction to inspect its estimate.
       </div>
       <p class="source">
         Source: ABS, National Health Survey 2022, state and territory
@@ -163,6 +197,12 @@
      </p>
    </section>
    
+    <div class="story-group" id="vaping-patterns">
+      <p class="section-kicker">04 / A RELATED BEHAVIOUR</p>
+      <h2>E-cigarette use across generations</h2>
+      <p>Vaping is a separate measure from smoking. These charts provide additional context on how current e-cigarette use varies by age and survey period.</p>
+    </div>
+
     <!-- Chart 7 -->
     <section class="chart-card">
       <h2>7. E-cigarette use across age groups</h2>
@@ -190,7 +230,7 @@
         Use of e-cigarettes, by age and gender, 2016 to 2025.
         Estimates marked with an asterisk should be used with caution.
         The # symbol identifies a statistically significant change
-        between 2022–2023 and 2025.
+        between 2022–2023 and 2025, according to the source table.
       </p>
     </section>
     
@@ -212,7 +252,7 @@
         lower daily smoking prevalence in 2025 than in 2001, while an
         upward slope indicates a higher estimate. Compare the size and
         direction of the changes between age groups and between males
-        and females.Hover over a point to inspect its estimate and 
+        and females. Hover over a point to inspect its estimate and 
         source flag.
       </div>
       <p class="source">
@@ -267,10 +307,10 @@
       </div>
       <div class="insight">
         <strong>How to read this chart:</strong>
-        Each row represents an age group. Green shows the 2022-
-        2023 estimate, while orange shows the 2025 estimate. A
+        Each row represents an age group. Green shows the 2022–2023 estimate, while orange shows the
+        2025 estimate. A
         dot further to the right indicates a higher percentage.
-        The largest visible gap is among 18-24-year-olds, whose
+        The largest visible gap is among 18–24-year-olds, whose
         estimate fell from 20.6% to 14.0%. These are survey estimates,
         so differences should be interpreted in the context of
         the source table's notes.
@@ -286,36 +326,45 @@
     
     <!-- Chart 11 -->
     <section class="chart-card">
-      <h2>11. Support for vaping controls differs by age</h2>
+      <h2>11. Support for vaping and nicotine controls</h2>
       <p class="description">
-        Beyond smoking and vaping rates, public attitudes provide
-        another perspective on nicotine-related harm. This heat map
-        compares support for four measures intended to reduce
-        nicotine-related harm across Australian age groups in 2025.
+        This heatmap compares the percentage of Australians in different
+        age groups who support selected vaping and nicotine control
+        policies. It provides a complementary view of public attitudes,
+        rather than measuring smoking or vaping behaviour directly.
       </p>
+
       <div id="chart-11" class="chart-container">
         Loading Chart 11...
       </div>
+
       <div class="insight">
         <strong>How to read this chart:</strong>
-        Each cell shows the percentage of people in an age group
-        who support or strongly support a measure. Darker green
-        indicates higher support. Hover over a cell to inspect the
-        exact percentage and measure.
+        Each cell shows the percentage supporting a policy within an
+        age group. Darker green represents higher support. Compare
+        across each row to explore age differences for a policy, or
+        down a column to compare support for different policies within
+        an age group.
       </div>
+
       <p class="source">
-        Source: Australian Institute of Health and Welfare (AIHW),
-        National Drug Strategy Household Survey 2025, Table 2.56:
-        Support for measures to reduce the problems associated with
-        nicotine use, by age. Values represent support or strong support.
+        Source: AIHW, National Drug Strategy Household Survey,
+        Table 2.56. Percentages represent support for the specified
+        vaping and nicotine control policies.
       </p>
     </section>
 
   </main>
 
+  <section class="method-note" aria-labelledby="method-heading">
+    <h2 id="method-heading">Reading the data responsibly</h2>
+    <p>Smoking and e-cigarette use are distinct measures, and estimates from different surveys may use different age ranges or definitions. Check each chart’s subtitle, source note and tooltip before comparing values. Where source flags or margins of error are supplied, interpret estimates using the original table notes.</p>
+  </section>
+
   <footer class="footer">
-    <p>Data visualisation project · FIT3179 · Smoking Behaviour</p>
-    <p>Australian smoking patterns, demographic differences and trends.</p>
+    <p><strong>Smoking in Australia</strong> · FIT3179 Data Visualisation 2</p>
+    <p>Data sources: Australian Institute of Health and Welfare (AIHW) and Australian Bureau of Statistics (ABS), as cited beneath each visualisation.</p>
+    <a href="#top" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">Back to top ↑</a>
   </footer>
 </body>
 </html>
